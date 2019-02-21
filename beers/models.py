@@ -42,15 +42,34 @@ def unique_slug_generator(instance, new_slug=None):
 
 
 class Beer(models.Model):
+    HARMONIZATION_CHOICES = (
+        ('Aves', 'Aves'),
+        ('Balada', 'Balada'),
+        ('Bolinho de Bacalhau', 'Bolinho de Bacalhau'),
+        ('Carne de Caça', 'Carne de Caça'),
+        ('Chocolate', 'Chocolate'),
+        ('Churrasco', 'Churrasco'),
+        ('Costelinha de Porco', 'Costelinha de Porco'),
+        ('Doces', 'Doces'),
+        ('Frutos do Mar', 'Frutos do Mar'),
+        ('Hambúrguer', 'Hambúrguer'),
+        ('Massas', 'Massas'),
+        ('Panna Costa', 'Panna Costa'),
+        ('Petiscos de Boteco', 'Petiscos de Boteco'),
+        ('Pizza', 'Pizza'),
+        ('Queijos', 'Queijos'),
+        ('Quitutes Apimentados', 'Quitutes Apimentados'),
+        ('Saladas', 'Saladas')
+    )
     name = models.CharField(max_length=120)
-    slug = models.SlugField()
-    description = models.CharField(max_length=200)
-    harmonization = models.CharField(max_length=50)
+    slug = models.SlugField(blank=True, null=True)
+    description = models.CharField(max_length=200, blank=True, null=True)
+    harmonization = models.CharField(max_length=25, choices=HARMONIZATION_CHOICES)
     color = models.CharField(max_length=120, blank=True, null=True)
-    alcohol_content = models.CharField(max_legnth=5)
+    alcohol_content = models.CharField(max_length=5)
     temperature = models.CharField(max_length=5)
-    ingredients = models.CharField(max_length=120)
-    image = models.ImageField(upload_to=upload_image_path)
+    ingredients = models.CharField(max_length=120, blank=True, null=True)
+    image = models.ImageField(upload_to=upload_image_path, blank=True, null=True)
 
     def __str__(self):
         return self.name

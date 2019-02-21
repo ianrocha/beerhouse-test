@@ -7,6 +7,6 @@ class BeerSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Beer
-        fields = ('name', 'description', 'harmonization',
+        fields = ('id', 'name', 'description', 'harmonization',
                   'color', 'alcohol_content', 'temperature',
                   'ingredients', 'image')
