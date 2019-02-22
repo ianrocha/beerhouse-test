@@ -10,8 +10,9 @@ import { BeerhouseItem } from './beerhouse.interface';
 export class AppComponent implements OnInit {
 
   items: BeerhouseItem[];
+  beer: BeerhouseItem;
   error: any;
-  item: BeerhouseItem;
+  itemDetail: boolean = false;
 
   constructor(private api: ApiService) { }
 
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
 
   detail(id: number) {
     this.api.getBeerhouseItemDetail(id).subscribe(
-      (item: BeerhouseItem) => this.item = item,
+      (beer: BeerhouseItem) => this.beer = beer,
       (error: any) => this.error = error
     );
   }
