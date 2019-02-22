@@ -23,7 +23,7 @@ pip-selfcheck.json
 # Django related
 # src/<yourproject>/settings/local.py
 # static-cdn/  # any collected static files
-beerhouse-backend/beerhouse/aws/
+beerhouse-backend/beerhouse/aws/conf.py
 
 
 # Byte-compiled / optimized / DLL files
