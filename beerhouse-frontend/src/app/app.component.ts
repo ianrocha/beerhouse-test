@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   beer: BeerhouseItem;
   error: any;
   itemDetail: boolean = false;
+  itemAdd: boolean = false;
 
   constructor(private api: ApiService) { }
 

@@ -22,7 +22,7 @@
 
     <div class="container" style="text-align:center">
       <!-- Area da Lista de cervejas -->
-      <div class="jumbotron" *ngIf="itemDetail===false">
+      <div class="jumbotron" *ngIf="itemDetail===false && itemAdd===false">
         <h1>
           Lista de cervejas
         </h1>
@@ -41,36 +41,49 @@
             </div>
           </div>
         </div>
-
-        <!--<ngtemplate ngIf="Add=True">-->
-          <div class="row">
-              <input #itemName type='text' placeholder='Name'><br/><br/>
-              <input #itemDescription type='text' placeholder='Description'><br/><br/>
-              <input #itemHarmonization type='text' placeholder='Harmonization'><br/><br/>
+        <hr/>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-success" (click)="itemAdd = !itemAdd">Adicionar Cerveja</button>
           </div>
-          <br/>
-
-          <div class="row">
-              <input #itemColor type='text' placeholder='Color'><br/><br/>
-              <input #itemAlcoholContent type='text' placeholder='Alcohol Content'><br/><br/>
-              <input #itemTemperature type='text' placeholder='Temperature'><br/><br/>
-          </div>
-          <br/>
-
-          <div class="row">
-              <input #itemIngredients type='text' placeholder='Ingredients'><br/><br/>
-              <input #itemImage type="file" placeholder="Image"><br/><br/>
-          </div>
-          <br/>
-          <div class="row">
-              <button class="btn btn-success" (click)="add(itemName.value, itemDescription.value, itemHarmonization.value, itemColor.value, itemAlcoholContent.value, itemTemperature.value, itemIngredients.value)">Add New Beer</button>
-              {{ error?.message }}
-          </div>
-          <hr/>
+        </div>
       </div>
+      <!-- Fim da area de lista de cervejas -->
+
+      <!-- Area para adicionar cerveja -->
+      <div class="jumbotron" *ngIf="itemAdd===true && itemDetail===false">
+        <h1>
+          Adicionar Nova Cerveja
+        </h1>
+        <hr/>
+
+        <div class="row">
+          <div class="col">
+            <label for="name">Name: </label><input #itemName type='text' placeholder='Name'><br/><br/>
+            <label for="description">Description: </label><input #itemDescription type='text' placeholder='Description'><br/><br/>
+            <label for="harmonization">Harmonization: </label><input #itemHarmonization type='text' placeholder='Harmonization'><br/><br/>
+            <label for="color">Color: </label><input #itemColor type='text' placeholder='Color'><br/><br/>
+            <label for="alcoholContent">Alcohol Content:</label><input #itemAlcoholContent type='text' placeholder='Alcohol Content'><br/><br/>
+            <label for="temperature">Temperature:</label><input #itemTemperature type='text' placeholder='Temperature'><br/><br/>
+            <label for="ingredients">Ingredients:</label><input #itemIngredients type='text' placeholder='Ingredients'><br/><br/>
+            <label for="image">Image: </label><input #itemImage type="file" placeholder="Image"><br/><br/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-success" (click)="add(itemName.value, itemDescription.value, itemHarmonization.value,
+            itemColor.value, itemAlcoholContent.value, itemTemperature.value, itemIngredients.value);
+            itemAdd = !itemAdd">Confirmar</button>
+            {{ error?.message }}
+            <button class="btn btn-info" (click)="itemAdd = !itemAdd">Voltar</button>
+          </div>
+        </div>
+      </div>
+      <!-- Fim da area de adicionar uma cerveja -->
 
       <!-- Area de detalhe da cerveja -->
-      <div class="jumbotron" *ngIf="itemDetail===true">
+      <div class="jumbotron" *ngIf="itemDetail===true && itemAdd===false">
         <div class="row">
             <div class="col-3">
               <img src="{{beer.image}}" />
@@ -89,6 +102,7 @@
           <button class="btn btn-info" (click)="itemDetail = !itemDetail">Voltar</button>
         </div>
       </div>
+      <!-- Fim da area de detalhe da cerveja -->
     </div>
   </body>
 </html>
