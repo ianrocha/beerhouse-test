@@ -23,7 +23,7 @@ pip-selfcheck.json
 # Django related
 # src/<yourproject>/settings/local.py
 # static-cdn/  # any collected static files
-beerhouse-backend/beerhouse/aws/conf.py
+beerhouse-backend/beerhouse/aws/
 
 
 # Byte-compiled / optimized / DLL files
@@ -136,7 +136,7 @@ ENV/
 /bazel-out
 
 # dependencies
-/node_modules
+beerhouse-frontend/node_modules/
 
 # profiling files
 chrome-profiler-events.json
@@ -172,3 +172,35 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+.DS_STORE
+
+/dist/
+/bazel-out
+/integration/bazel/bazel-*
+e2e_test.*
+node_modules
+tools/gulp-tasks/cldr/cldr-data/
+
+# Include when developing application packages.
+pubspec.lock
+.c9
+.idea/
+.settings/
+.vscode/launch.json
+*.swo
+modules/.settings
+modules/.vscode
+
+# Don't check in secret files
+*secret.js
+
+# Ignore npm/yarn debug log
+npm-debug.log
+yarn-error.log
+
+# build-analytics
+.build-analytics
+
+# rollup-test output
+/modules/rollup-test/dist/
