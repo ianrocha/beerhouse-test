@@ -5,7 +5,7 @@ import { BeerhouseItem } from './beerhouse.interface';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'templates/beer-list.component.html',
+  templateUrl: 'beerhouse.component.html',
 })
 export class AppComponent implements OnInit {
 
