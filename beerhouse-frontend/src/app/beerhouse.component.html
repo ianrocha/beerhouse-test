@@ -61,7 +61,26 @@
           <div class="col">
             <label for="name">Name: </label><input #itemName type='text' placeholder='Name'><br/><br/>
             <label for="description">Description: </label><input #itemDescription type='text' placeholder='Description'><br/><br/>
-            <label for="harmonization">Harmonization: </label><input #itemHarmonization type='text' placeholder='Harmonization'><br/><br/>
+            <label for="harmonization">Harmonization: </label>
+            <select #itemHarmonization name="harmonization" ng-model="data.harmonization">
+              <option value="Aves">Aves</option>
+              <option value="Balada">Balada</option>
+              <option value="Bolinho de Bacalhau">Bolinho de Bacalhau</option>
+              <option value="Carne de Caça">Carne de Caça</option>
+              <option value="Chocolate">Chocolate</option>
+              <option value="Churrasco">Churrasco</option>
+              <option value="Costelinha de Porco">Costelinha de Porco</option>
+              <option value="Doces">Doces</option>
+              <option value="Frutos do Mar">Frutos do Mar</option>
+              <option value="Hambúrguer">Hambúrguer</option>
+              <option value="Massas">Massas</option>
+              <option value="Panna Costa">Panna Costa</option>
+              <option value="Petiscos de Boteco">Petiscos de Boteco</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Queijos">Queijos</option>
+              <option value="Quitutes Apimentados">Quitutes Apimentados</option>
+              <option value="Saladas">Saladas</option>
+            </select><br/><br/>
             <label for="color">Color: </label><input #itemColor type='text' placeholder='Color'><br/><br/>
             <label for="alcoholContent">Alcohol Content:</label><input #itemAlcoholContent type='text' placeholder='Alcohol Content'><br/><br/>
             <label for="temperature">Temperature:</label><input #itemTemperature type='text' placeholder='Temperature'><br/><br/>
@@ -99,7 +118,9 @@
         </div>
         <br/>
         <div class="row">
-          <button class="btn btn-info" (click)="itemDetail = !itemDetail">Voltar</button>
+          <div class="col">
+            <button class="btn btn-info" (click)="itemDetail = !itemDetail">Voltar</button>
+          </div>
         </div>
       </div>
       <!-- Fim da area de detalhe da cerveja -->
