@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     # 3th party,
     'rest_framework',
     'rest_framework_swagger',
+    'corsheaders',
     'storages',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -131,3 +133,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_dev', 'media_root')
 
 from beerhouse.aws.conf import *
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:4200',
+    '127.0.0.1:4200'
+)
