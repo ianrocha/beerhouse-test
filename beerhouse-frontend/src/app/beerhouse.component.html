@@ -22,7 +22,7 @@
 
     <div class="container" style="text-align:center">
       <!-- Area da Lista de cervejas -->
-      <div class="jumbotron" *ngIf="itemDetail===false && itemAdd===false">
+      <div class="jumbotron" *ngIf="itemDetail===false && itemAdd===false && itemEdit===false">
         <h1>
           Lista de cervejas
         </h1>
@@ -51,7 +51,7 @@
       <!-- Fim da area de lista de cervejas -->
 
       <!-- Area para adicionar cerveja -->
-      <div class="jumbotron" *ngIf="itemAdd===true && itemDetail===false">
+      <div class="jumbotron" *ngIf="itemAdd===true && itemDetail===false && itemEdit===false">
         <h1>
           Adicionar Nova Cerveja
         </h1>
@@ -102,7 +102,7 @@
       <!-- Fim da area de adicionar uma cerveja -->
 
       <!-- Area de detalhe da cerveja -->
-      <div class="jumbotron" *ngIf="itemDetail===true && itemAdd===false">
+      <div class="jumbotron" *ngIf="itemDetail===true && itemAdd===false && itemEdit===false">
         <div class="row">
             <div class="col-3">
               <img src="{{beer.image}}" />
@@ -110,7 +110,7 @@
           <div class="col-9">
               <p>{{ beer.name }}</p><br/>
               <ng-template ngIf="{{ beer.description }}"><p>{{ beer.description }}</p><br/></ng-template>
-              <ng-template ngIf="{{ beer.color }}"><p>{{ beer.color }}</p><br/></ng-template>
+              <ng-template ngIf="{{ beer.color }}"><p>Color: {{ beer.color }}</p><br/></ng-template>
               <p>Teor alcoólico: {{ beer.alcohol_content }}</p><br/>
               <p>Temperatura: {{ beer.temperature }}</p><br/>
               <ng-template ngIf="{{ beer.ingredients }}"><p>Ingredientes: {{ beer.ingredients }}</p></ng-template>
@@ -119,11 +119,64 @@
         <br/>
         <div class="row">
           <div class="col">
+            <button class="btn btn-success" (click)="itemDetail = !itemDetail; itemEdit = !itemEdit">Editar</button>
+            {{ error?.message }}
             <button class="btn btn-info" (click)="itemDetail = !itemDetail">Voltar</button>
           </div>
         </div>
       </div>
       <!-- Fim da area de detalhe da cerveja -->
+
+      <!-- Area para editar cerveja -->
+      <div class="jumbotron" *ngIf="itemEdit===true && itemAdd===false && itemDetail===false">
+        <h1>
+          Editar Cerveja
+        </h1>
+        <hr/>
+
+        <div class="row">
+          <div class="col">
+            <label for="name">Name: </label><input #itemName type='text' value="{{ beer.name }}" placeholder='Name'><br/><br/>
+            <label for="description">Description: </label><input #itemDescription type='text' value="{{ beer.description }}" placeholder='Description'><br/><br/>
+            <label for="harmonization">Harmonization: </label>
+            <select #itemHarmonization name="harmonization" ng-model="data.harmonization">
+              <option value="Aves">Aves</option>
+              <option value="Balada">Balada</option>
+              <option value="Bolinho de Bacalhau">Bolinho de Bacalhau</option>
+              <option value="Carne de Caça">Carne de Caça</option>
+              <option value="Chocolate">Chocolate</option>
+              <option value="Churrasco">Churrasco</option>
+              <option value="Costelinha de Porco">Costelinha de Porco</option>
+              <option value="Doces">Doces</option>
+              <option value="Frutos do Mar">Frutos do Mar</option>
+              <option value="Hambúrguer">Hambúrguer</option>
+              <option value="Massas">Massas</option>
+              <option value="Panna Costa">Panna Costa</option>
+              <option value="Petiscos de Boteco">Petiscos de Boteco</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Queijos">Queijos</option>
+              <option value="Quitutes Apimentados">Quitutes Apimentados</option>
+              <option value="Saladas">Saladas</option>
+            </select><br/><br/>
+            <label for="color">Color: </label><input #itemColor type='text' value="{{ beer.color }}" placeholder='Color'><br/><br/>
+            <label for="alcoholContent">Alcohol Content:</label><input #itemAlcoholContent type='text' value="{{ beer.alcohol_content }}" placeholder='Alcohol Content'><br/><br/>
+            <label for="temperature">Temperature:</label><input #itemTemperature type='text' value="{{ beer.temperature }}" placeholder='Temperature'><br/><br/>
+            <label for="ingredients">Ingredients:</label><input #itemIngredients type='text' value="{{ beer.ingredients }}" placeholder='Ingredients'><br/><br/>
+            <label for="image">Image: </label><input #itemImage type="file" placeholder="Image"><br/><br/>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-success" (click)="put(beer.id, itemName.value, itemDescription.value, itemHarmonization.value,
+            itemColor.value, itemAlcoholContent.value, itemTemperature.value, itemIngredients.value);
+            itemEdit = !itemEdit">Confirmar</button>
+            {{ error?.message }}
+            <button class="btn btn-info" (click)="itemEdit = !itemEdit; itemDetail = !itemDetail">Voltar</button>
+          </div>
+        </div>
+      </div>
+      <!-- Fim da area de editar uma cerveja -->
     </div>
   </body>
 </html>

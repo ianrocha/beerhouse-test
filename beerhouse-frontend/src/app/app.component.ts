@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   error: any;
   itemDetail: boolean = false;
   itemAdd: boolean = false;
+  itemEdit: boolean = false;
 
   constructor(private api: ApiService) { }
 
@@ -28,6 +29,15 @@ export class AppComponent implements OnInit {
     this.api.getBeerhouseItemDetail(id).subscribe(
       (beer: BeerhouseItem) => this.beer = beer,
       (error: any) => this.error = error
+    );
+  }
+
+  put(id: number, itemName: string, itemDescription: string, itemHarmonization: string,
+  itemColor: string, itemAlcoholContent: string, itemTemperature: string,
+  itemIngredients: string, itemImage: File) {
+    this.api.putBeerhouseItem(id, itemName, itemDescription, itemHarmonization,
+    itemColor, itemAlcoholContent, itemTemperature, itemIngredients, itemImage).subscribe(
+      (item: BeerhouseItem) => this.items.push(item)
     );
   }
 

@@ -24,6 +24,13 @@ export class ApiService {
     );
   }
 
+  putBeerhouseItem(id: number, name: string, description: string, harmonization: string, color: string, alcohol_content: string, temperature: string, ingredients: string, image: File) {
+    return this.http.put(
+      this.apiRoot.concat('beer/' + id + '/'),
+      { name, description, harmonization, color, alcohol_content, temperature, ingredients, image }
+    );
+  }
+
   deleteBeerhouseItem(id: number) {
     return this.http.delete(this.apiRoot.concat('beer/' + id + '/'));
   }
