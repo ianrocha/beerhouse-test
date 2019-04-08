@@ -8,7 +8,7 @@ Front-end
 - acessar 'localhost:4200'
 
 Back-end
-- ter o python instalado
+- ter o python v3.6 instalado
 - criar um ambiente virtual
 - instalar as dependecias com 'pip install -r requirements.txt'
 - acessar a pasta beerhouse-backend e utilizar o comando 'python manage.py runserver' para rodar o projeto
