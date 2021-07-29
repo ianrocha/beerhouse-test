@@ -8,7 +8,7 @@ from django.utils.text import slugify
 
 def get_filename_ext(filepath):
     """
-    essa funcao pega o nome do arquivo
+    essa funcao pega o nome do teste
     """
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
